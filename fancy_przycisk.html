@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Fancy przycisk</title>
+		<meta name="description" content=""/>
+		<meta name="keywords" content=""/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+		
+		<style>
+		body
+		{
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+		}
+		
+		#content
+		{
+			width: 100%;
+			height: 600px;
+		}
+		
+		#button
+		{
+			margin-left: 400px;
+			margin-top: 200px;
+			width: 450px;
+			height: 150px;
+			color: white;
+			font-size: 45px;
+			border-radius: 100px;
+			background-color: #3BE3D8;
+			border: 0;
+			font-weight: 600;
+			cursor: pointer;
+			box-shadow: 0px 0px 50px 10px #2AD2C7;
+			transition-duration: 0.5s;
+		}
+		
+		
+		#button:active
+		{
+			width: 650px;
+			margin-left: 300px;
+			margin-top: 200px;
+			height: 150px;
+			font-size: 45px;
+			border-radius: 150px;
+			border: 0;
+			font-weight: 600;
+			transition-duration: 0.2s;
+			color: var(--active-color);
+			background-color: var(--active-background-color);
+			box-shadow: var(--active-box-shadow);
+		}
+		
+		</style>
+		
+		</head>
+		
+		<body onload="change();">
+			<div id="content">
+				<input type="submit" id="button" value="fancy przycisk" onclick="change();" input></input>
+			</div>
+		</body>
+		
+		<script>
+		var color/*kolor guzika*/ = ["#3BE3D8"/*niebieski(j)*/, "#FF1C14"/*czerwony*/,"#FFFF1C"/*żółty*/,"#24FF24"/*zielony*/,"#3224FF"/*niebieski*/,"#FF21E1"/*różowy*/,"#E6E1E2"/*biały*/,"#454545"/*czarny*/];
+		var color2/*cienie*/ = ["#2AD2C7"/*niebieski(j)*/, "#EE0B03"/*czerwony*/,"#EEEE0D"/*żółty*/,"#13D003"/*zielony*/,"#2113EE"/*niebieski*/,"#EE10D0"/*różowy*/,"#D5D0D1"/*biały*/,"#343434"/*czarny*/];
+		var color3/*kolor po najechaniu*/ = ["#00FFF6"/*niebieski(j)*/, "#E00000"/*czerwony*/,"#FFFF00"/*żółty*/,"#00FF00"/*zielony*/,"#2200FF"/*niebieski*/,"#FF00D4"/*różowy*/,"#E6E6E6"/*biały*/,"#000000"/*czarny*/];
+		var color4/*kolor podczas klikania*/ = ["#00EEE5"/*niebieski(j)*/, "#D00000"/*czerwony*/,"#EEEE00"/*żółty*/,"#00EE00"/*zielony*/,"#1100EE"/*niebieski*/,"#EE00C3"/*różowy*/,"#D5D5D5"/*biały*/,"#111111"/*czarny*/];
+		var color5/*kolor cienia podczas najeżdżania*/ = ["#00FFF6"/*niebieski(j)*/, "#E00000"/*czerwony*/,"#FFFF00"/*żółty*/,"#00FF00"/*zielony*/,"#2200FF"/*niebieski*/,"#FF00D4"/*różowy*/,"#E6E6E6"/*biały*/,"#000000"/*czarny*/];
+		var color6/*kolor cienia podczas klikania*/ = ["#2AD2C7"/*niebieski(j)*/, "#C00000"/*czerwony*/,"#DDDD00"/*żółty*/,"#00DD00"/*zielony*/,"#0000DD"/*niebieski*/,"#DD00B2"/*różowy*/,"#C4C4C4"/*biały*/,"#222222"/*czarny*/];
+		var color7/*kolor czcionki podczas najeżdżania*/ = ["black"/*niebieski(j)*/, "white"/*czerwony*/,"black"/*żółty*/,"black"/*zielony*/,"grey"/*niebieski*/,"black"/*różowy*/,"black"/*biały*/,"grey"/*czarny*/];
+		var color8/*kolor czcionki podczas klikania*/ = ["grey"/*niebieski(j)*/, "white"/*czerwony*/,"grey"/*żółty*/,"grey"/*zielony*/,"white"/*niebieski*/,"grey"/*różowy*/,"grey"/*biały*/,"white"/*czarny*/];
+		var color9/*kolor czcionki*/ = ["white"/*niebieski(j)*/, "white"/*czerwony*/,"grey"/*żółty*/,"white"/*zielony*/,"white"/*niebieski*/,"dark-grey"/*różowy*/,"grey"/*biały*/,"white"/*czarny*/];
+		var d=document.getElementById("button");
+		function change()
+		{
+			var h = d.style.getPropertyValue("background-color");
+			var hh = document.getElementById("content");
+			hh.style.setProperty("background-color", h);
+			
+			var b = Math.floor(Math.random()*8)+1;
+			if(color[b]==h){console.log("raz"); change(); }
+			else
+			var x="0px 0px 50px 10px "+color2[b];
+			var y="0px 0px 50px 10px "+color4[b];
+			var z="0px 0px 30px 10px "+color5[b];
+			
+				d.style.backgroundColor = color[b];
+				d.style.boxShadow = x;
+				d.style.color= color9[b];
+			
+			d.onmouseover=function()
+			{
+				this.style.width="750px";
+				this.style.marginLeft = "260px";
+				this.style.fontSize = "50px";
+				this.style.borderRadius = "200px";
+				this.style.backgroundColor = color3[b];
+				this.style.boxShadow = y;
+				this.style.color= color7[b];
+			}
+			d.onmouseout=function()
+			{
+				this.style.width="450px";
+				this.style.marginLeft = "400px";
+				this.style.fontSize = "45px";
+				this.style.borderRadius = "200px";
+				this.style.backgroundColor = color[b];
+				this.style.boxShadow = x;
+				this.style.color= color9[b];
+			}
+			d.onmousedown=function()
+			{
+				this.style.width="650px";
+				this.style.marginLeft = "300px";
+				this.style.fontSize = "45px";
+				this.style.borderRadius = "200px";
+				this.style.backgroundColor = color4[b];
+				this.style.boxShadow = z;
+				this.style.color= color8[b];
+			}
+			d.onmouseup=function()
+			{
+				this.style.width="750px";
+				this.style.marginLeft = "260px";
+				this.style.fontSize = "50px";
+				this.style.borderRadius = "200px";
+				this.style.backgroundColor = color3[b];
+				this.style.boxShadow = y;
+				this.style.color= color7[b];
+			}
+		}
+		</script>
+</html>
